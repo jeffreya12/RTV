@@ -1,0 +1,1654 @@
+This distribution algorithm uses a technique called Genetic Algorithm.
+The Gen is represented as a list of lanes. Each index represents a vehicle and contains the number of the lane in which the vehicle should be allocated.
+For example: [0, 1, 2] means that vehicle 1 will be allocated in lane 0, vehicle 2 in lane 1 and vehicle 3 in lane 2.
+A lane represented with -1 means that the vehicle can not be allocated.
+Index 0 represents the vehicle with the id #136.
+Index 1 represents the vehicle with the id #137.
+Index 2 represents the vehicle with the id #138.
+Index 3 represents the vehicle with the id #139.
+Index 4 represents the vehicle with the id #140.
+Index 5 represents the vehicle with the id #141.
+Index 6 represents the vehicle with the id #142.
+Index 7 represents the vehicle with the id #143.
+Index 8 represents the vehicle with the id #144.
+Index 9 represents the vehicle with the id #145.
+Index 10 represents the vehicle with the id #146.
+Index 11 represents the vehicle with the id #147.
+Index 12 represents the vehicle with the id #148.
+Index 13 represents the vehicle with the id #149.
+Index 14 represents the vehicle with the id #150.
+Index 15 represents the vehicle with the id #151.
+Index 16 represents the vehicle with the id #152.
+Index 17 represents the vehicle with the id #153.
+Index 18 represents the vehicle with the id #154.
+Index 19 represents the vehicle with the id #155.
+Index 20 represents the vehicle with the id #156.
+Index 21 represents the vehicle with the id #157.
+Index 22 represents the vehicle with the id #158.
+Index 23 represents the vehicle with the id #159.
+Index 24 represents the vehicle with the id #160.
+Index 25 represents the vehicle with the id #161.
+Index 26 represents the vehicle with the id #162.
+Index 27 represents the vehicle with the id #163.
+Index 28 represents the vehicle with the id #164.
+Index 29 represents the vehicle with the id #165.
+Index 30 represents the vehicle with the id #166.
+Index 31 represents the vehicle with the id #167.
+Index 32 represents the vehicle with the id #168.
+Index 33 represents the vehicle with the id #169.
+Index 34 represents the vehicle with the id #170.
+The initial population is: 
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+Generation number 1: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #168 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 22762.2473
+New Generation Fitness Sum: 23672.7372
+Generation number 2: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #168 can't be moved anywhere. No mutation is performed
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #140 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #144 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #167 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 3: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #154 can't be moved anywhere. No mutation is performed
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 4: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 5: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #145 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 6: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #142 can't be moved anywhere. No mutation is performed
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 7: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #155 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 8: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #148 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 9: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 10: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 11: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #140 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #166 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 12: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 13: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 14: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 15: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #152 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 16: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #139 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #151 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 17: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 18: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #150 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #162 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 19: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #152 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 20: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #137 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 21: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 22: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 23: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 24: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #148 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 25: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 26: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #144 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 27: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 28: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #156 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #165 can't be moved anywhere. No mutation is performed
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #158 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #160 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 29: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 30: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #153 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #166 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 31: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #145 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 32: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 33: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #161 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 34: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #161 can't be moved anywhere. No mutation is performed
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 35: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #170 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 36: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #151 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #152 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 37: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #160 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #149 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 38: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #161 can't be moved anywhere. No mutation is performed
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #168 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 39: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 40: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 41: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 42: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #162 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 43: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 44: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #148 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #170 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 45: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 46: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #150 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 47: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #143 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #150 can't be moved anywhere. No mutation is performed
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 48: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #165 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 49: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #147 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The gen: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] has been selected for mutation.
+The vehicle #158 can't be moved anywhere. No mutation is performed
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Generation number 50: 
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+The selected gens for crossover are identical, crossover will not be performed.
+
+Current Population Fitness Sum: 23672.7372
+New Generation Fitness Sum: 23672.7372
+Best Solution is: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4] with fitness 910.48989
