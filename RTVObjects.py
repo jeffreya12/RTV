@@ -13,7 +13,9 @@ class ServiceLane():
         self.capacity = capacity
         self.pausedTime = 0
         self.image = imageReference
+
         self.toldo = toldo
+        self.toldoId = []
         self.imageId = None
         self.textId = None
         self.newestVehicle = None

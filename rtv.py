@@ -11,9 +11,6 @@ import time
 import queue
 
 ## INSTRUCCIONES
-toldoId = ""
-
-
 class DistributeVehiclesWindow(Toplevel):
     def __init__(self, lanes, vehicles, distributionId, receiveDistribution):
         Toplevel.__init__(self)
@@ -24,26 +21,26 @@ class DistributeVehiclesWindow(Toplevel):
         self.distribution = None
         self.sendDistribution = receiveDistribution
         self.executing = False
-        self.title("Distribute Vehicles")
+        self.title("Distribuir Vehiculos")
         self.initializeGUIElements()
 
     def initializeGUIElements(self):
         self.inputFrame = Frame(self)
         self.inputFrame.grid(row=0, columnspan=2)
 
-        self.populationText = Label(self, text="Population Size: ")
+        self.populationText = Label(self, text="Tamaño de la población: ")
         self.populationText.grid(row=0, column=0)
 
         self.populationInput = Text(self, width=10, height=1)
         self.populationInput.grid(row=0, column=1)
 
-        self.generationText = Label(self, text="Number of Generations: ")
+        self.generationText = Label(self, text="# Generaciónes: ")
         self.generationText.grid(row=1, column=0)
 
         self.generationInput = Text(self, width=10, height=1)
         self.generationInput.grid(row=1, column=1)
 
-        self.techInfoText = Label(self, text="Technical Information About Vehicle Distribution")
+        self.techInfoText = Label(self, text="Info técnica el vehiculo")
         self.techInfoText.grid(row=2, columnspan=2)
 
         self.gaText = tkst.ScrolledText(self)
@@ -65,14 +62,14 @@ class DistributeVehiclesWindow(Toplevel):
 
         self.executeButton = Button(self,
                                     command=self.executeDistribution,
-                                    text="Distribute",
+                                    text="Distribuir",
                                     width=10)
         self.executeButton.grid(row=4, column=0)
 
         self.finishButton = Button(self,
                                    command=self.finishDistribution,
-                                   text="Finish",
-                                   width=6)
+                                   text="Finalizar",
+                                   width=20)
         self.finishButton.grid(row=4, column=1)
 
     def disableEvent(self):
@@ -170,16 +167,15 @@ Salidas:
 class ChangeVehiclesWindow(Toplevel):
     def __init__(self, laneId, currentCarTypes, changeLaneMethod):
         Toplevel.__init__(self)
-        self.vehicleTypes = ["Motorcycle > 5 Years", "Motorcycle <= 5 Years", "Vehicles > 5 Years",
-                             "Vehicles <= 5 Years", "Buses", "Two-Axle Truck", "Five-Axle Truck"]
+        self.vehicleTypes = []
         self.laneToChange = laneId
         self.changeLaneCars = changeLaneMethod
         self.currentCarTypes = currentCarTypes
-        self.title("Change Vehicles")
+        self.title("Cambiar Vehiculos")
         self.initializeGUIElements()
 
     def initializeGUIElements(self):
-        self.selectTypesText = Label(self, text="Change Vehicle Types for Lane " + str(self.laneToChange + 1))
+        self.selectTypesText = Label(self, text="Cambiar el tipo de vehiculos en la linea " + str(self.laneToChange + 1))
         self.selectTypesText.grid(row=0, columnspan=2)
 
         self.vehicleTypesList = Listbox(self, selectmode=MULTIPLE, height=7, exportselection=0)
@@ -194,14 +190,14 @@ class ChangeVehiclesWindow(Toplevel):
 
         self.acceptButton = Button(self,
                                    command=self.finish,
-                                   text="Accept",
-                                   width=6)
+                                   text="Aceptar",
+                                   width=20)
         self.acceptButton.grid(row=2, column=0)
 
         self.cancelButton = Button(self,
                                    command=self.exit,
-                                   text="Cancel",
-                                   width=6)
+                                   text="Cancelar",
+                                   width=20)
         self.cancelButton.grid(row=2, column=1)
 
     def finish(self):
@@ -234,12 +230,12 @@ class AddVehicleWindow(Toplevel):
         self.masterAdd = addVehiclesMaster
         self.vehicleTypes = ["Motorcycle > 5 Years", "Motorcycle <= 5 Years", "Vehicles > 5 Years",
                              "Vehicles <= 5 Years", "Buses", "Two-Axle Truck", "Five-Axle Truck"]
-        self.title("Add Vehicles")
+        self.title("Agregar Vehiculos")
         self.loadImages()
         self.initializeGUIElements()
 
     def initializeGUIElements(self):
-        self.explainText = Label(self, text="Enter quantity of the vehicle, then press the corresponding button.")
+        self.explainText = Label(self, text="Ingrese la cantidad de vehiculos")
         self.explainText.pack(side=TOP, fill=BOTH)
 
         self.vehicleCount = Text(self, height=1, width=10)
@@ -358,17 +354,23 @@ class ConfigWindow(Toplevel):
     def __init__(self, store):
         Toplevel.__init__(self)
         self.configurationLists = []
-        self.vehicleTypes = ["Motorcycle > 5 Years", "Motorcycle <= 5 Years", "Vehicles > 5 Years",
-                             "Vehicles <= 5 Years", "Buses", "Two-Axle Truck", "Five-Axle Truck"]
+        self.vehicleTypes = ["Motos con más de 5 años de uso",
+                             "Motos con 5 o menos años de uso",
+                             "Vehículos livianos con más de 5 años de uso",
+                             "Vehículos livianos con 5 o menos años de uso",
+                             "Buses",
+                             "Camiones de 2 ejes",
+                             "Camiones de 5 ejes"
+                             ]
         self.lanesConfiguration = {}
         self.masterStore = store
-        self.title("RTV Configuration")
+        self.title("Configuración RTV")
         self.initializeGUIElements()
 
     def initializeGUIElements(self):
 
         # Hacemos un canvas y lo agregamos al master para poder scrollear
-        self.canvas = Canvas(self, width=160)
+        self.canvas = Canvas(self, width=260)
         self.canvas.pack(side=LEFT)
 
         # Tenemos que agregarle scrollbar en Y por si son muchos carriles
@@ -379,7 +381,7 @@ class ConfigWindow(Toplevel):
         self.canvas.config(yscrollcommand=self.vScrollbar.set)
 
         # Ahora agregamos un frame al canvas para poder agregarle los widgets
-        self.widgetsFrame = Frame(self.canvas, width=160)
+        self.widgetsFrame = Frame(self.canvas, width=260)
         self.canvas.create_window((0, 0), window=self.widgetsFrame, anchor="nw")
 
         # Para el scroll
@@ -387,34 +389,34 @@ class ConfigWindow(Toplevel):
         self.bind('<MouseWheel>', self.onMouseWheelMove)
 
         # Ahora hacemos un frame para las opciones, esto con el fin de permitir un reseteo
-        self.lanesFrame = Frame(self.widgetsFrame, width=160)
+        self.lanesFrame = Frame(self.widgetsFrame, width=260)
 
         # Agregamos la entrada en el widgetsFrame
-        self.lanesLabel = Label(self.widgetsFrame, text="Number of Lanes: ")
+        self.lanesLabel = Label(self.widgetsFrame, text="Numero de lineas: ")
         self.lanesLabel.grid(row=0, column=0, padx=(10, 0))
 
-        self.lanesText = Text(self.widgetsFrame, height=1, width=5)
+        self.lanesText = Text(self.widgetsFrame, height=1, width=10)
         self.lanesText.grid(row=0, column=1, padx=(0, 10))
         self.lanesText.bind('<Tab>', self.focusNextInput)
 
         # Agregamos el boton de accept al frame.
         self.acceptButton = Button(self.widgetsFrame,
                                    command=self.startConfiguration,
-                                   text="Accept",
-                                   width=6)
+                                   text="Aceptar",
+                                   width=20)
         self.acceptButton.grid(row=1, columnspan=2)
 
         # Creamos el boton de reset, pero todavía no lo mostramos
         self.resetButton = Button(self.widgetsFrame,
                                   command=self.resetOptions,
-                                  text="Reset",
-                                  width=5)
+                                  text="Reiniciar",
+                                  width=20)
 
         # Creamos el boton de inicio, pero todavía no lo mostramos
         self.startButton = Button(self.widgetsFrame,
                                   command=self.startSimulation,
-                                  text="Start",
-                                  width=5)
+                                  text="Iniciar",
+                                  width=20)
 
     def OnFrameConfigure(self, event):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
@@ -462,22 +464,22 @@ class ConfigWindow(Toplevel):
         self.maxCapacityWidgets = []
         for i in range(1, self.lanes + 1):
             self.lanesConfiguration[i] = []
-            self.laneLabel = Label(self.lanesFrame, text="Lane " + str(i) + " Options")
+            self.laneLabel = Label(self.lanesFrame, text="Opciones Linea " + str(i))
             self.laneLabel.grid(row=i + offset, columnspan=2, padx=(10, 0))
 
             offset += 1
-            self.capacityLabel = Label(self.lanesFrame, text="Max Capacity: ")
+            self.capacityLabel = Label(self.lanesFrame, text="Capacidad Máxima: ")
             self.capacityLabel.grid(row=i + offset, column=0)
-            self.capacityText = Text(self.lanesFrame, height=1, width=5)
+            self.capacityText = Text(self.lanesFrame, height=1, width=10)
             self.capacityText.grid(row=i + offset, column=1)
             self.maxCapacityWidgets.insert(i - 1, self.capacityText)
 
             offset += 1
-            self.vehicleTypesLabel = Label(self.lanesFrame, text="Select Vehicle Types")
+            self.vehicleTypesLabel = Label(self.lanesFrame, text="Seleccione el tipo de vehiculo")
             self.vehicleTypesLabel.grid(row=i + offset, columnspan=2)
 
             offset += 1
-            vehicleTypesList = Listbox(self.lanesFrame, selectmode=MULTIPLE, height=7, exportselection=0)
+            vehicleTypesList = Listbox(self.lanesFrame, selectmode=MULTIPLE, height=7, width=50, exportselection=0)
             vehicleTypesList.grid(row=i + offset, columnspan=2)
 
             for item in self.vehicleTypes:
@@ -556,7 +558,6 @@ class MainWindow:
         self.lanes = []
         self.waitingVehicles = []
         self.attentionTimes = [30, 20, 60, 40, 80, 100, 120]
-        # self.attentionTimes = [15, 5, 20, 10, 15, 25, 30]
         self.vehiclesImages = []
         self.canvasbgColor = "white"  # "#76a4ed"
         self.vehicleIdColor = "white"
@@ -620,14 +621,12 @@ class MainWindow:
     def initializeGUIElements(self):
 
         ##Widgets para el Panel de Espera
-        self.waitingText = Label(self.waitingPanelFrame, text="Waiting Area")
-        self.waitingText.pack(side=TOP)
 
         # Hacemos dos frames: Uno para carros en espera de ser distribuidos
         # Y otro para carros en espera de su carril, ya que estos tienen una capacidad máxima de fila
 
         # Esto primero para espera de distribución
-        self.waitingCarsText = Label(self.waitingPanelFrame, text="Waiting Cars for Distribution")
+        self.waitingCarsText = Label(self.waitingPanelFrame, text="En espera para distribuir")
         self.waitingCarsText.pack(side=TOP)
 
         self.waitingCarsFrame = Frame(self.waitingPanelFrame)
@@ -645,7 +644,7 @@ class MainWindow:
         self.waitingCarsCanvas.bind('<MouseWheel>', self.onMouseWheelMoveWaitingPanel)
 
         # Esto para espera de carril
-        self.waitingCarsText = Label(self.waitingPanelFrame, text="Waiting Cars for Lane Availability")
+        self.waitingCarsText = Label(self.waitingPanelFrame, text="Esperando una linea disponible")
         self.waitingCarsText.pack(side=TOP)
 
         self.waitingLaneCarsFrame = Frame(self.waitingPanelFrame)
@@ -663,54 +662,53 @@ class MainWindow:
         self.waitingLaneCarsCanvas.bind('<MouseWheel>', self.onMouseWheelMoveWaitingLanePanel)
 
         # Ahora los botones del panel
-        self.addVehicleButton = Button(self.waitingPanelFrame,
-                                       command=self.addVehiclesButtonCommand,
-                                       text="Add Vehicles",
-                                       width=13)
-        self.addVehicleButton.pack(side=LEFT)
-        self.addVehicleButton.config(state='disabled')
+
+        self.startButton = Button(self.waitingPanelFrame,
+                                  command=self.startSimulation,
+                                  text="Iniciar",
+                                  width=20)
+        self.startButton.pack(side=BOTTOM)
+
 
         self.distributeVehicleButton = Button(self.waitingPanelFrame,
                                               command=self.distributeVehicles,
-                                              text="Distribute Vehicles",
-                                              width=17)
-        self.distributeVehicleButton.pack(side=RIGHT)
+                                              text="Distribuir Vehiculos",
+                                              width=20)
+        self.distributeVehicleButton.pack(side=BOTTOM)
         self.distributeVehicleButton.config(state='disabled')
 
-        ##Widgets para las opciones de la simulación
-        self.simulationText = Label(self.simulationFrame, text="Simulation")
+
+        self.addVehicleButton = Button(self.waitingPanelFrame,
+                                       command=self.addVehiclesButtonCommand,
+                                       text="Agregar vehiculos",
+                                       width=20)
+        self.addVehicleButton.pack(side=BOTTOM)
+        self.addVehicleButton.config(state='disabled')
+
+
+    ##Widgets para las opciones de la simulación
+        self.simulationText = Label(self.simulationFrame, text="Simulación")
         self.simulationText.grid(row=0, column=1, columnspan=2, sticky=N)
 
-        self.instructionsButton = Button(self.simulationFrame,
-                                         command=self.showInstructions,
-                                         text="Instructions",
-                                         width=12)
-        self.instructionsButton.grid(row=1, column=1, columnspan=2)
-
         self.configureButton = Button(self.simulationFrame,
-                                      text="Configure Simulation",
+                                      text="Configurar Simulación",
                                       command=self.configureSimulation,
                                       width=20)
         self.configureButton.grid(row=2, column=1, columnspan=2)
 
-        self.startButton = Button(self.simulationFrame,
-                                  command=self.startSimulation,
-                                  text="Start",
-                                  width=5)
-        self.startButton.grid(row=3, column=1)
 
         self.resetButton = Button(self.simulationFrame,
                                   command=self.resetSimulation,
-                                  text="Reset",
-                                  width=6,
+                                  text="Reiniciar",
+                                  width=20,
                                   state='disabled')
-        self.resetButton.grid(row=3, column=2)
+        self.resetButton.grid(row=4, column=1)
 
         self.exitButton = Button(self.simulationFrame,
                                  command=self.exit,
-                                 text="Exit",
+                                 text="Salir",
                                  width=4)
-        self.exitButton.grid(row=4, column=1, columnspan=2)
+        self.exitButton.grid(row=5, column=1, columnspan=2)
 
         self.simulationFrame.grid_columnconfigure(0, weight=1)
         self.simulationFrame.grid_columnconfigure(3, weight=1)
@@ -718,7 +716,7 @@ class MainWindow:
         ##Widgets para las opciones de mantenimiento
         self.maintenanceFrame.grid_columnconfigure(0, weight=1)
 
-        self.maintenanceText = Label(self.maintenanceFrame, text="Maintenance")
+        self.maintenanceText = Label(self.maintenanceFrame, text="Mantenimiento")
         self.maintenanceText.grid(row=0, columnspan=2)
 
         self.laneComboBox = Combobox(self.maintenanceFrame, state='readonly')
@@ -726,13 +724,13 @@ class MainWindow:
 
         self.changeVehicleTypesButton = Button(self.maintenanceFrame,
                                                command=self.changeLaneVehicleTypes,
-                                               text="Change Vehicles",
+                                               text="Cambiar vehiculos",
                                                width=15)
         self.changeVehicleTypesButton.grid(row=2, columnspan=2)
 
         ##Widgets para las opciones de pausar líneas
 
-        self.pauseLanesText = Label(self.pauseLanesFrame, text="Pause Lanes")
+        self.pauseLanesText = Label(self.pauseLanesFrame, text="Pausar lineas")
         self.pauseLanesText.grid(row=0, column=1, columnspan=2)
 
         self.lanesList = Listbox(self.pauseLanesFrame, selectmode=MULTIPLE, height=5, exportselection=0)
@@ -741,13 +739,13 @@ class MainWindow:
         self.lanesPauseTimeInput = Text(self.pauseLanesFrame, height=1, width=3)
         self.lanesPauseTimeInput.grid(row=2, column=1, sticky=E + W)
 
-        self.lanesPauseTimeText = Label(self.pauseLanesFrame, text="Seconds")
+        self.lanesPauseTimeText = Label(self.pauseLanesFrame, text="Segundos")
         self.lanesPauseTimeText.grid(row=2, column=2)
 
         self.lanesPauseButton = Button(self.pauseLanesFrame,
                                        command=self.pauseLanes,
-                                       text="Pause",
-                                       width=6)
+                                       text="Pausa",
+                                       width=20)
         self.lanesPauseButton.grid(row=3, column=1, columnspan=2)
 
         self.pauseLanesFrame.grid_columnconfigure(0, weight=1)
@@ -756,7 +754,7 @@ class MainWindow:
         ##Widgets para las opciones de sacar vehículo
         self.removeVehicleFrame.grid_columnconfigure(0, weight=1)
 
-        self.removeVehicleText = Label(self.removeVehicleFrame, text="Remove Vehicle")
+        self.removeVehicleText = Label(self.removeVehicleFrame, text="Quitar vehiculo")
         self.removeVehicleText.grid(row=0, columnspan=2)
 
         self.laneComboBoxVehicle = Combobox(self.removeVehicleFrame, state='readonly')
@@ -764,7 +762,7 @@ class MainWindow:
 
         self.removeVehicleButton = Button(self.removeVehicleFrame,
                                           command=self.removeVehicle,
-                                          text="Remove Vehicle",
+                                          text="Quitar vehiculo",
                                           width=14)
         self.removeVehicleButton.grid(row=2, columnspan=2)
 
@@ -834,18 +832,20 @@ class MainWindow:
                 greatestCapacity = newLane.capacity
             x = self.canvas.canvasx(0)
             y = self.canvas.canvasy(ypos)
-            self.canvas.create_text(x + 5, y, anchor=NW, font=self.boldFont, text="Lane #" + str(key))
-            self.canvas.create_text(x + 5, y + 15, anchor=NW, font=self.boldFont, text="Capacity = " + str(lane[0]))
+            self.canvas.create_text(x + 5, y, anchor=NW, font=self.boldFont, text="Linea #" + str(key))
+            self.canvas.create_text(x + 5, y + 15, anchor=NW, font=self.boldFont, text="Capacidad = " + str(lane[0]))
             remainingTimeTextId = self.canvas.create_text(x + 5, y + 30, anchor=NW, font=self.boldFont,
-                                                          text="Remaining Attention Time: ")
+                                                          text="Tiempo restante: ")
             remainingTimeId = self.canvas.create_text(x + 210, y + 30, anchor=NW, font=self.boldFont, text="0")
             imageId = self.canvas.create_image(x, y + 50, anchor=NW, image=newLane.image)
             toldoId = self.canvas.create_image(x, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
-            toldoId2 = self.canvas.create_image(x + 175, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
-            toldoId3 = self.canvas.create_image(x + 175 * 2, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
+            toldoId2 = self.canvas.create_image(x + 172.5, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
+            toldoId3 = self.canvas.create_image(x + 172.5 * 2, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
+            toldoId4 = self.canvas.create_image(x + 172.5 * 3, y - 4.5 + 50, anchor=NW, image=newLane.toldo)
             newLane.toldoId.append(toldoId)
             newLane.toldoId.append(toldoId2)
             newLane.toldoId.append(toldoId3)
+            newLane.toldoId.append(toldoId4)
 
             newLane.setRemainingTextId(remainingTimeId)
             newLane.setImageId(imageId)
@@ -863,7 +863,7 @@ class MainWindow:
 
     def startSimulation(self):
         if self.lanes == []:
-            messagebox.showerror("Missing Lanes", "You must add at least one lane to start the simulation.")
+            messagebox.showerror("Linea requerida", "Debe agregar una linea de servicio.")
             return
 
         self.resetButton.config(state='normal')
@@ -873,7 +873,7 @@ class MainWindow:
         self.simulate()
 
     def resetSimulation(self):
-        reset = messagebox.askokcancel("Reset Simulation", "Reset Simulation? This will delete every lane and vehicle.")
+        reset = messagebox.askokcancel("Riniciar", "¿Desea reiniciar todo?.")
 
         if not reset:
             return
@@ -965,8 +965,8 @@ class MainWindow:
 
     def distributeVehicles(self):
         if self.waitingVehicles == []:
-            messagebox.showinfo("No Waiting Vehicles",
-                                "There are no vehicles waiting for distribution. You must add vehicles first.")
+            messagebox.showinfo("No hay vehiculos en espera",
+                                "Agregue vehiculos primero")
             return
         self.distributeWindow = DistributeVehiclesWindow(self.lanes, self.waitingVehicles, self.distCount,
                                                          self.receiveDistribution)
@@ -1141,7 +1141,7 @@ class MainWindow:
                 continue
 
             self.waitingLaneCarsCanvas.create_text(100, 60 * carsCounter + 15,
-                                                   text="Vehicles waiting for lane #" + str(idx + 1) + ": ")
+                                                   text="Vehiculo esperando la linea #" + str(idx + 1) + ": ")
             for waitingVehicle in lane.getOutsideWaitingVehicles():
                 imageId = self.waitingLaneCarsCanvas.create_image(100, 60 * carsCounter + 45,
                                                                   image=self.vehiclesImages[waitingVehicle.getType()])
